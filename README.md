@@ -25,6 +25,31 @@ Bellman first introduced the concept of the curse of dimensionality and pointed 
 
 ![image](https://user-images.githubusercontent.com/118228743/202030723-a9c3675c-91e0-46fe-937f-ae9580b04f97.png)
 
-  Image demonstrates that the amount of training data needed to cover 20% of the feature range grows exponentially with the number of dimensions.
+Figure1↑ The amount of training data needed to cover 20% of the feature range grows exponentially with the number of dimensions
 
 High-dimensional data gives more information for machines to learn and figure out. Hence, the irrelevant data create more noise in the model. The model then may learn from the noise and overfit, so it cannot generalize well. Moreover, when data contains high dimensions, it’s hard and nearly impossible to visualize the data. If data can be compressed to few dimensions that matters, it’ll be much easier to interpret and visualize the data. Also, high-dimensional data requires more complexity for algorithms to learn and train, so it not only creates extra difficulties to store the data but also makes the computation infeasible for some algorithms like random forest.
+
+Therefore, we need dimensionality reduction to avoid curse of dimensionality.
+
+## Options for dimensionality reduction
+One option is feature selection. Intuitively, when there're so many features for a data, we can ask experts to advise us to select meaningful features and abandon redundant features. 
+
+![image](https://user-images.githubusercontent.com/118228743/202039132-5b7273ea-718f-4688-8d02-2ec0217971a9.png)
+
+This process of feature selection is usually manually and intuitively. It requires domain knowledge from experts and can result in loss of information due to the selection process.
+
+Another option is model regularization, which selects and tunes the preferred level of complexity to help model generalize better. For example, in regression, when we want to regularize the model, we adopt loss minimization or optimization (like L1 or L2 norm functions used). In the process, some features are assigned a weiight of 0 or closed to 0, which basically inform us that those features are not meaningful to help predict the output in our model. 
+
+However, model regularizatio requires supervised learning such as linear regression because we are making prediction with features (such that we have a target). Hence, it's not in the domain of unsupervised dimensionality reduction I want to discuss in this blog.
+***
+## Linear dimensionality reduction
+One option to conduct unsupervised dimensionality reduction is by learning mapping from high-dimensional to low-dimensional space, which can be either linear or non-linear. Linearly, the mapping is in the form of matrix such that matrix z = A * matrix x to project x to z. In machine learning, an approach we usually use linear dimensionality reduction is principal component analysis (PCA).
+
+## Principal component analysis
+PCA is defined as an orthogonal linear transformation that transforms the data to a new coordinate system such that the greatest variance by some scalar projection of the data comes to lie on the first coordinate (called the first principal component), the second greatest variance on the second coordinate, and so on.
+<p align="center"> 
+![image](https://user-images.githubusercontent.com/118228743/202081526-a00b7e2a-3f7e-41cf-8286-f45fb6c0db64.png)  
+</p>
+
+
+Intuitevely, for linear transforamtion 
