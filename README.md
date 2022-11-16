@@ -8,7 +8,7 @@ Professor Larrel Pinto gave a lecture about dimensionality reduction on November
 ## What is dimensionality reduction?
 In machine learning, data are often high-dimensional. For example, in tasks like document classification, there can be thousands of words per document. Some of those words can be meaningful to help us classify the type of documents. In document classification, the name of the president usually appears in a political article, so it can be seen as meaningful and contribute to our task. However, there are other repetitive words like "the", "I", and "a" that don't provide any meaningful information but are still deemed as dimensions of documents. Hence, it's important for us to reduce those redundant dimensions/features in performing machine learning tasks.
 
-Then, dimensionality reduction, as the name points out, is an unsupervised machine learning technique that helps transform data from a high-dimensional feature space to a low-dimensional feature space with more meaningful features. 
+Then, dimensionality reduction, as the name points out, is an unsupervised machine learning technique that helps transform data from a high-dimensional feature space to a low-dimensional feature space with meaningful features. 
 
 If we remain data high-dimensional in our machine learning task, problems of the curse of dimensionality can occur. 
 
