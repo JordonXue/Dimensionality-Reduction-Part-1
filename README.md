@@ -3,7 +3,7 @@
 *Jordon Xue*
 
 
-Professor Larrel Pinto gave a lecture about dimensionality reduction on November 20th. This blog will cover the content covered in that lecture and illustrates details about dimensionality reduction with a focus on the linear mapping.
+Professor Larrel Pinto gave a lecture about dimensionality reduction on November 10th. This blog will cover the content covered in that lecture and illustrates details about dimensionality reduction with a focus on the linear mapping.
 ***
 ## What is dimensionality reduction?
 In machine learning, data are often high-dimensional. For example, in tasks like document classification, there can be thousands of words per document. Some of those words can be meaningful to help us classify the type of documents. In document classification, the name of the president usually appears in a political article, so it can be seen as meaningful and contribute to our task. However, there are other repetitive words like "the", "I", and "a" that don't provide any meaningful information but are still deemed as dimensions of documents. Hence, it's important for us to reduce those redundant dimensions/features in performing machine learning tasks.
