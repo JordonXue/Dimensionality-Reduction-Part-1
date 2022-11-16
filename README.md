@@ -13,7 +13,7 @@ Then, dimensionality reduction, as the name points out, is an unsupervised machi
 If we remain data high-dimensional in our machine learning task, problems of the curse of dimensionality can occur. 
 
 ## Curse of dimensionality
-Bellman first introduced the concept of the curse of dimensionality and pointed out that various phenomenon that occurs within high-dimensional space does not exist in low-dimensional settings. Due to the higher number of dimension model gets sparse. Higher dimensional space causes a problem in clustering (becomes very difficult to separate one cluster of data from another), search space also increases, and the complexity of the model increases. Below are several ways of the curse of high dimensionality.
+Bellman first introduced the concept of the curse of dimensionality and pointed out that various phenomenon that occurs within high-dimensional space does not exist in low-dimensional settings. Due to the higher number of dimension, the model gets sparse. Higher dimensional space causes a problem in clustering (becomes very difficult to separate one cluster of data from another), search space also increases, and the complexity of the model increases. Below are several ways of the curse of high dimensionality.
 
 1) Redundant or irrelevant features degrade the performance. 
 
@@ -27,7 +27,7 @@ Bellman first introduced the concept of the curse of dimensionality and pointed 
     <img src="https://user-images.githubusercontent.com/118228743/202030723-a9c3675c-91e0-46fe-937f-ae9580b04f97.png">
 </p>
 
-Figure1↑ The amount of training data needed to cover 20% of the feature range grows exponentially with the number of dimensions
+Figure above demonstrates the amount of training data needed to cover 20% of the feature range grows exponentially with the number of dimensions.
 
 High-dimensional data gives more information for machines to learn and figure out. Hence, the irrelevant data create more noise in the model. The model then may learn from the noise and overfit, so it cannot generalize well. Moreover, when data contains high dimensions, it’s hard and nearly impossible to visualize the data. If data can be compressed into a few dimensions that matter, it’ll be much easier to interpret and visualize the data. Also, high-dimensional data requires more complexity for algorithms to learn and train, so it not only creates extra difficulties to store the data but also makes the computation infeasible for some algorithms like the random forest.
 
@@ -58,7 +58,7 @@ PCA is defined as an orthogonal linear transformation that transforms the data t
 
 Intuitively, for linear transformation we want the purple line in the above figure because it represents the directions of the data that explain a maximal amount of variance, that is to say, the lines that capture most information of the data. In the figure above, when the black line matches the purple, it goes through the origin and it’s the direction in which the projection of the points (red dots) is the most spread out. Mathematically speaking, it’s the line that maximizes the variance (the average of the squared distances from the projected points (red dots) to the origin). 
 
-In PCA, the purple line is the first principal component. The second line then will be in the orthogonal direction to it. Then we can find out how much variance each principal component can be actually accounted for. The goal of PCA is to use a few principal components obtained to reduce the dimensions of data, while still explaining a high amount of variance. 
+In PCA, the purple line is the first principal component. The second line (component) then will be in the orthogonal direction to it. Then we can find out how much variance each principal component can be actually accounted for. The goal of PCA is to use a few principal components obtained to reduce the dimensions of data, while still explaining a high amount of variance. 
 
 To efficiently perform a PCA task, we first standardize our data. Since PCA is very sensitive to variance, the aim of this step is to standardize the range of the continuous initial variables so that each one of them contributes equally to the analysis. if there are large differences between the ranges of initial variables, those variables with larger ranges will dominate over those with small ranges, which will lead to biased results, so we need to scale the data to make it comparable. Mathematically, we can use the z score to normalize the data: z = (value - mean) /standard deviation. 
 
@@ -78,7 +78,7 @@ Following that, the next step is to calculate the eigenvectors and eigenvalues. 
 
 In linear algebra's sense, eigenvectors of the covariance matrix C are the directions of the axes where there is the most variance and that we call principal components. Eigenvalues are the coefficients attached to eigenvectors, which give the amount of variance carried in each principal component. As you can see from the visualization of principal components and variance explained (can be calculated as λk/Σi λi) from the figure above, PCA tries to put the maximum possible information in the first component, then maximum remaining information in the second, and so on. In this sense, by ranking the eigenvectors in descending order of their eigenvalues, we can get the principal components in order of significance, which explains why eigenvalues correspond with pricinpal components.
 
-Finally, based on the eigenvectors and eigenvalues, we can decide whether to discard some features based on their significance and kept feature vectors that had all remaining vectors. Then, we got the final data set from the dot product the feature vector and the scaled data set derived. If we chose to keep k dimensions for the feature vectors, the final data set will be in k dimensions. Therefore, we achieve our goal of dimensionality reduction!
+Finally, based on the eigenvectors and eigenvalues, we can decide whether to discard some features based on their significance and kept feature vectors that had all meaningful vectors. Then, we got the final data set from the dot product of the feature vector and the scaled data set derived. If we chose to keep k dimensions for the feature vectors, the final data set will be in k dimensions. Therefore, we achieve our goal of dimensionality reduction!
 
 To perform the task in python, we can use the following code:
 
@@ -108,7 +108,7 @@ X_test = sc.transform(X_test)
 
 # Applying PCA function on training 
 # and testing set of X component
-#Python can conduct the complicated algorithm within few lines
+# Python can conduct the complicated algorithm within few lines
 from sklearn.decomposition import PCA
   
 pca = PCA(n_components = 2)
@@ -119,13 +119,13 @@ X_test = pca.transform(X_test)
 explained_variance = pca.explained_variance_ratio_
 ```
 ## Final thoughts
-This blog mainly introduces linear dimensionality reduction as a method to reduce dimensions and avoid curse of dimensionality. To actually determine how many pricipal components to keep is a another question. Generally speaking, 2-3 components are good for data visualization. 
+This blog mainly introduces linear dimensionality reduction as a method to reduce dimensions and avoid curse of dimensionality. To actually determine how many pricipal components to keep is another question. Generally speaking, 2-3 components are good for data visualization. 
 
 <p align="center">
     <img src="https://user-images.githubusercontent.com/118228743/202099874-fd2ab9fb-d607-40ab-9e3c-6dfe537008f9.png">
 </p>
 
-One popular and simple way is using the Kaiser criterion, which states that we simply drop components with eigen values less than 1. Greater than 1 eigenvalues suggests that the corresponding components explain more variance than a single variable, given that a variable accounts for a unit of variance, so components should be kept.
+One popular and simple way is using the Kaiser criterion, which states that we simply drop components with eigenvalues less than 1. Greater than 1 eigenvalues suggests that the corresponding components explain more variance than a single variable, given that a variable accounts for a unit of variance, so those components should be kept.
 
 Picture references: 
 
