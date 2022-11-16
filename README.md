@@ -2,6 +2,7 @@
 
 *Jordon Xue*
 
+*Published 11/16/2022*
 
 Professor Larrel Pinto gave a lecture about dimensionality reduction on November 10th. This blog will cover the content covered in that lecture and illustrates details about dimensionality reduction with a focus on the linear mapping.
 ***
